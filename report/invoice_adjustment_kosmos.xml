@@ -29,6 +29,16 @@
                     <t t-esc="total_in_words"/>
                 </span>
             </xpath>
+
+            <!--PO Ref Date-->
+            <xpath expr="//div[@name='reference']" position="replace">
+                <div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference">
+                    <strong>Reference:</strong>
+                    <p class="m-0" t-field="o.ref"/>
+                    <p>(<span class="m-o" t-field="o.ref_date" t-options='{"format": "dd MMMM yyyy"}'/>)</p>
+
+                </div>
+            </xpath>
         </template>
     </data>
 </odoo>
