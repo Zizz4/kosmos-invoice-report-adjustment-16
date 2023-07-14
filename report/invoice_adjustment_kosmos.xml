@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_invoice_document_adjustment_inherit_kosmos" inherit_id="account.report_invoice_document">
+            <!--bill to-->
+            <xpath expr="//div[@name='address_not_same_as_shipping']/t/address" position="before">
+                <strong>Bill to:</strong>
+            </xpath>
+            <xpath expr="//div[@name='address_same_as_shipping']/t/address" position="before">
+                <strong>Bill to:</strong>
+            </xpath>
+            <xpath expr="//div[@name='no_shipping']/t/address" position="before">
+                <strong>Bill to:</strong>
+            </xpath>
+
+            <!--format invoice date-->
+            <xpath expr="//div[@name='invoice_date']/p" position="replace">
+                <p class="m-0" t-field="o.invoice_date" t-options='{"format": "dd MMMM yyyy"}'/>
+            </xpath>
+            <xpath expr="//div[@name='due_date']/p" position="replace">
+                <p class="m-0" t-field="o.invoice_date_due" t-options='{"format": "dd MMMM yyyy"}'/>
+            </xpath>
+
+            <!-- total in word-->
+            <xpath expr="//div[@id='total']/div/table" position="after">
+                <t t-set="total_in_words"
+                   t-value="o.currency_id.with_context(lang='en_US').amount_to_text(o.amount_total)"/>
+                <span t-attf-style="font-size: {{'16px' if len(total_in_words) &lt;= 50 else '12px'}};">
+                    <t t-esc="total_in_words"/>
+                </span>
+            </xpath>
+        </template>
+    </data>
+</odoo>
