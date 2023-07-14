@@ -25,7 +25,7 @@
             <xpath expr="//div[@id='total']/div/table" position="after">
                 <t t-set="total_in_words"
                    t-value="o.currency_id.with_context(lang='en_US').amount_to_text(o.amount_total)"/>
-                <span t-attf-style="font-size: {{'16px' if len(total_in_words) &lt;= 50 else '12px'}};">
+                <span t-attf-style="font-size: {{'16px' if len(total_in_words) &lt;= 50 else '14px'}};">
                     <t t-esc="total_in_words"/>
                 </span>
             </xpath>
