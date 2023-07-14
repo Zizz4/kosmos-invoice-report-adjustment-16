@@ -12,8 +12,9 @@
     'category': 'Productivity',
     'author': 'Muhamad Syahril Aziz',
     'license': 'LGPL-3',
-    'depends': ['account'],
+    'depends': ['account','sale'],
     'data': ['views/po_reference.xml',
+             'views/so_po_ref_date.xml',
              'report/invoice_adjustment_kosmos.xml'],
     'installable': True,
     'auto_install': False
