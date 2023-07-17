@@ -16,7 +16,7 @@ class SaleOrderPoRefDate(models.Model):
         self.ensure_one()
 
         return {
-            'ref_date': self.client_order_ref_date or '',
+            'ref_date': self.client_order_ref_date,
             'ref': self.client_order_ref or '',
             'move_type': 'out_invoice',
             'narration': self.note,
